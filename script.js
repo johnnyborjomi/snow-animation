@@ -5,8 +5,8 @@ const ctxHeap = canvasHeap.getContext('2d');
 const requestAnimationFrame = window.requestAnimationFrame;
 const config = {
     glide: 2,
-    softness: 0,
-    speed: 1,
+    softness: 0.5,
+    speed: 5,
     flakeSizeMin: 1,
     flakeSizeMax: 8
 };
@@ -50,7 +50,9 @@ class Flake {
     }
 
     checkFlakeState() {
-        this.checkHeap();
+        if (Number(this.opacity) > 0.7) {
+            this.checkHeap();
+        }
 
         if (this.y >= canvas.height) {
             if (Number(this.opacity) > 0.7) {
